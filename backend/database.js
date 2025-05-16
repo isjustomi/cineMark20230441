@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 // 1- Configuro la URI o dirección de la base de datos
-const URI = "mongodb://localhost:27017/ZonaDigitalDB20170508";
+const URI = "mongodb://localhost:27017/CineMark20230441";
 
 // 2- Conecto la base de datos
 mongoose.connect(URI);

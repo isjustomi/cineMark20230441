@@ -1,18 +1,21 @@
 import express from "express";
 import moviesController from "../controllers/moviesController.js";
-import movies from "../models/movies.js";
-// Router() nos ayuda a colocar los metodos
-// que tendra mi ruta
+import multer from "multer";
+
+// Router() nos ayuda a colocar los métodos que tendrá mi ruta
 const router = express.Router();
+
+// Configuración de multer para guardar archivos en la carpeta "public/"
+const upload = multer({ dest: "public/" });
 
 router
   .route("/")
   .get(moviesController.getMovie)
-  .post(moviesController.insertMovie);
+  .post(upload.single("image"), moviesController.insertMovie);
 
 router
   .route("/:id")
-  .put(moviesController.updateMovie)
+  .put(upload.single("image"), moviesController.updateMovie) // Agrega multer aquí
   .delete(moviesController.deleteMovie);
 
 export default router;
